@@ -1,0 +1,6599 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemical Market</title>
+
+<style>
+body{
+    font-family:verdana;
+    background:#f4f4f4;
+    margin:0;
+    text-align:center;
+  
+}
+#welcome{
+    margin:10px auto;
+    text-align:center;
+
+}
+
+#welcome h1{
+    color:#0b5ed7;
+    font-size:10px;
+}
+
+#welcome h2{
+    color:#555;
+    font-size:10px;
+}
+#welcome h5{
+    color:#0b5ed7;
+    font-size:10px;
+ display:inline-block;
+justify-content:center;
+gap:15px;
+  width: 180px;
+    height: 2=10px;
+    border: 1px solid #0b5ed7;
+    border-radius: 40px;
+    align-items: center;
+    margin: 0;
+    font-size: 10px;
+    background-color: white;
+    color: #0b5ed7;
+}
+
+#welcome h3{
+    color:#555;
+    font-size:10px;
+}
+</style>
+<style>
+header{
+    background:#0b5ed7;
+    color:white;
+    padding:20px;
+    position:relative;
+    text-align:center;
+    height:120px;
+}
+
+
+
+button{
+    background:#0b5ed7;
+    color:white;
+    border:none;
+    padding:10px 10px;
+    margin:2px;
+    border-radius:50px;   
+    font-size:10px;
+}
+
+button:hover{
+    background:#084298;
+}
+
+table{
+    width:90%;
+    margin:auto;
+   
+    display:none;
+    
+    background:white;
+}
+
+th{
+    background:#0b5ed7;
+    color:white;
+    padding:10px;
+}
+
+td{
+    border:1px solid #ccc;
+    padding:10px;
+}
+
+.active{
+    display:table;
+}
+</style>
+
+<script>
+function showTable(id){
+
+var tables=document.querySelectorAll("table");
+
+tables.forEach(function(table){
+table.classList.remove("active");
+});
+
+document.getElementById(id).classList.add("active");
+
+}
+{
+
+    document.getElementById("welcome").style.display = "none";
+
+    var tables = document.querySelectorAll("table");
+
+    tables.forEach(function(table){
+        table.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+}
+
+function showTable(id) {
+
+  
+    if (document.getElementById("welcome")) {
+        document.getElementById("welcome").style.display = "none";
+    }
+
+    let tables = document.querySelectorAll("table");
+    tables.forEach(function(table) {
+        table.classList.remove("active");
+        table.style.display = "none";
+    });
+
+   
+    document.getElementById("perfumeButtons").style.display = "none";
+
+    if (id == "perfumes") {
+        document.getElementById("perfumeButtons").style.display = "block";
+        return;
+    }
+
+ 
+    document.getElementById(id).style.display = "table";
+    document.getElementById(id).classList.add("active");
+}
+function showTable(id) {
+
+    if (document.getElementById("welcome")) {
+        document.getElementById("welcome").style.display = "none";
+    }
+
+    let tables = document.querySelectorAll("table");
+    tables.forEach(function(table){
+        table.style.display = "none";
+        table.classList.remove("active");
+    });
+
+    const perfumeButtons = document.getElementById("perfumeButtons");
+
+    
+    if (
+        id === "perfumes" ||
+        id === "ibraTable" ||
+        id === "luziTable" ||
+        id === "victoriaTable" ||
+        id === "bathansbodeTable" ||
+  id === "maskaTable" ||
+  id === "oudaTable" ||
+ 
+        id === "collactionaTable"
+    ) {
+
+        perfumeButtons.style.display = "block";
+
+      
+        if (id !== "perfumes") {
+            document.getElementById(id).style.display = "table";
+            document.getElementById(id).classList.add("active");
+        }
+
+    } else {
+
+        
+        perfumeButtons.style.display = "none";
+        document.getElementById(id).style.display = "table";
+        document.getElementById(id).classList.add("active");
+
+    }
+}
+
+function searchProduct(){
+
+var value=document.getElementById("searchText").value.toUpperCase();
+
+var tables=document.querySelectorAll("table");
+
+tables.forEach(function(table){
+
+var rows=table.getElementsByTagName("tr");
+
+var found=false;
+
+for(var i=1;i<rows.length;i++){
+
+if(rows[i].innerText.toUpperCase().indexOf(value)>-1){
+
+rows[i].style.display="";
+
+found=true;
+
+}else{
+
+rows[i].style.display="none";
+
+}
+
+}
+
+if(found){
+
+table.classList.add("active");
+
+document.getElementById("welcome").style.display="none";
+
+}else{
+
+table.classList.remove("active");
+
+}
+
+});
+
+}
+</script>
+
+</head>
+
+<body>
+
+<header>
+<div style="text-align:left; font-size:8px; margin-bottom:10px;">
+    7/2026
+</div>
+
+
+<h4>Chemical Market</h4>
+<h5>شركه متخصصه في المواد الخام التجميليه </h5>
+<h5>الخامات و الاسعار </h5>
+
+</header>
+
+
+</div>
+<div class="buttons">
+
+<button onclick="showTable('silicone')">السيليكونات</button>
+
+<button onclick="showTable('vitamins')">فيتامينات</button>
+
+<button onclick="showTable('wax')">شموع</button>
+
+<button onclick="showTable('butter')">زبدات</button>
+
+<button onclick="showTable('detergent')">مواد فعاله</button>
+
+<button onclick="showTable('raw material')">خامات</button>
+
+<button onclick="showTable('colourmika')">الوان مايكا </button>
+
+<button onclick="showTable('colourwater')">الوان مائيه </button>
+
+<button onclick="showTable('colouroil')">الوان زيتيه </button>
+
+
+<button onclick="showTable('perfumes')">الزيوت العطرية</button>
+
+<div id="perfumeButtons" style="display:none;">
+
+<button onclick="showTable('ibraTable')">إيبرا</button>
+
+<button onclick="showTable('luziTable')">لوزي</button>
+
+<button onclick="showTable('victoriaTable')">فيكتوريا سيكريت</button>
+
+<button onclick="showTable('bathansbodeTable')">باث اند بودي</button>
+<button onclick="showTable('collactionaTable')"> متنوعه</button>
+<button onclick="showTable('maskaTable')">مسكات</button>
+
+<button onclick="showTable('oudaTable')">اعواد</button>
+
+
+</div>
+
+<button onclick="showTable('flaver')">مكسبات الطعم</button>
+
+<button onclick="showTable('vegetable')">الزيوت النباتية</button>
+
+<button onclick="showTable('hydrosol')">الهيدروسولات</button>
+
+<button onclick="showTable('extract')">المستخلصات</button>
+
+<button onclick="showTable('products')">منتجات جاهزه </button>
+
+<br><br>
+
+<input type="text" id="searchText"
+placeholder="ابحث عن اسم الخامة">
+
+<button onclick="searchProduct()">بحث</button>
+
+<div id="welcome">
+    <h1>مرحبًا بكم في شركة Chemical Market</h1>
+    <h2>نتمنى لكم تجربة مميزة في تصفح منتجاتنا وخاماتنا.</h2>
+
+<div class="phone">
+<h5>
+    <a href="https://wa.me/201055478414" target="_blank">01055478414</a>
+</h5>
+
+<h5>
+    <a href="https://wa.me/201070607259" target="_blank">01070607259</a>
+</h5>
+<h5>
+    <a href="https://wa.me/201035774985" target="_blank">01035774985</a>
+</h5>
+
+<h5>
+    <a href="https://wa.me/201030535450" target="_blank">01030535450</a>
+</h5>
+<h5>
+    <a href="https://wa.me/201007600143" target="_blank">01007600143</a>
+</h5>
+
+<h5>
+    <a href="https://wa.me/201035714106" target="_blank">01035714106</a>
+</h5>
+<div class="text">
+<h3>المواد الخام
+أساس كل منتج ناجح
+كيمكال ماركت شركة متخصصة في تجارة وتوريد المواد الخام لصناعة مستحضرات التجميل والعناية الشخصية،
+ نوفر مجموعة متكاملة من الخامات الكيميائية، والزيوت النباتية، والزيوت العطرية، والمواد الفعالة والعطور،
+ بعناية فائقة وجودة موثوقة، لنكون الشريك الأول للمصانع، والمعامل،
+ والعلامات التجارية الباحثة عن التميز.</h3>
+
+</div>
+</div>
+</div>
+
+<table id="products">
+
+<tr>
+<th>اسم االخامه</th>
+<th>السعر</th>
+<th>الوحدة</th>
+</tr>
+
+<tr>
+    <td>ماء مقطر / Distilled Water (1L)</td>
+    <td>13</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>جل شعر (صغير)</td>
+    <td>38</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>ماء ورد للشعر</td>
+    <td>38</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>قاعدة جل (صغير)</td>
+    <td>63</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>بيور ماء ورد / Water Rose</td>
+    <td>69</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>بلسم (صغير)</td>
+    <td>75</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>شامبو للشعر (صغير)</td>
+    <td>75</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>ماء ورد</td>
+    <td>79</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>حمام كريم (صغير)</td>
+    <td>100</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>جل شعر</td>
+    <td>113</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>قاعدة كريم (بشرة وشعر - صغير)</td>
+    <td>125</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>شاور جل (متوسط)</td>
+    <td>125</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>بلسم (وسط)</td>
+    <td>150</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>حمام كريم (وسط)</td>
+    <td>150</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>ماء نعناع</td>
+    <td>150</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Hand Gel / هاند جل</td>
+    <td>150</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Hand Wash / هاند ووش</td>
+    <td>150</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>شامبو Color Fixing</td>
+    <td>188</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>شاور جل (كبير)</td>
+    <td>188</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>ماسك فحم جل</td>
+    <td>200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>قاعدة كريم (بشرة وشعر)</td>
+    <td>225</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>قاعدة كريم مرطب</td>
+    <td>225</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>قاعدة اسكرب</td>
+    <td>250</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>ماسك طمي</td>
+    <td>250</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>حمام كريم</td>
+    <td>274</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>قاعدة كريم 20%</td>
+    <td>275</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم ترميم (صغير)</td>
+    <td>275</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>جل Base Gel</td>
+    <td>300</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>قاعدة مخمرية كريم</td>
+    <td>300</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>بلسم</td>
+    <td>321</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>سيرم مائي</td>
+    <td>313</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>قاعدة أحماض</td>
+    <td>313</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>قاعدة لوشن</td>
+    <td>313</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>قاعدة معطر</td>
+<td>313</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>قاعدة مخمرية جل</td>
+    <td>400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>معطر جو</td>
+    <td>413</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>قاعدة مخمرية جل</td>
+    <td>427</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>شامبو بينك</td>
+    <td>438</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>قاعدة سبلاش</td>
+    <td>438</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>قاعدة مزيل عرق سائل</td>
+    <td>438</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>قاعدة مزيل عرق كريم</td>
+    <td>438</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم مرطب يوريا (متوسط)</td>
+    <td>438</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>غسول للبشرة الجافة (جل)</td>
+    <td>438</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>غسول للبشرة الحساسة (جل)</td>
+    <td>438</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>غسول للبشرة الحساسة (فوم)</td>
+    <td>438</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>غسول للبشرة الدهنية (جل)</td>
+    <td>438</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>شامبو للبشرة المرطب</td>
+    <td>438</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>جل الحواجب</td>
+    <td>463</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>تونر نياسيناميد</td>
+    <td>500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>حمام كريم (كبير)</td>
+    <td>500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>دراي أويل شفاف</td>
+    <td>500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>شامبو للقشرة</td>
+    <td>500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>غسول للبشرة الدهنية (فوم)</td>
+    <td>500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم مساج</td>
+    <td>500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>مخمرية جل</td>
+    <td>500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>مخمرية كريم</td>
+    <td>500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>مقشر أحماض 10%</td>
+    <td>500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم مرطب</td>
+    <td>525</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم جليكوليك + ساليسيليك</td>
+    <td>550</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>شامبو مرطب</td>
+    <td>555</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>بادي لوشن</td>
+    <td>563</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>دراي أويل شيمر</td>
+    <td>563</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>شامبو تساقط</td>
+    <td>563</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>مرطب جل</td>
+    <td>563</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>سكراب يوريا</td>
+    <td>575</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>سكرب شعر للقشرة</td>
+    <td>613</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>ترميم فازلين للشعر (صغير)</td>
+    <td>625</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>تونر Hyaluronic</td>
+    <td>625</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم مرطب تحت العين</td>
+    <td>625</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>مزيل عرق كريم</td>
+    <td>625</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>مزيل عرق سائل</td>
+    <td>688</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>مقشر أحماض 20%</td>
+    <td>688</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>زيت مساج</td>
+    <td>750</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>شيفينج كريم</td>
+    <td>750</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>غسول لكل أنواع البشرة</td>
+    <td>750</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>قاعدة مخمرية فازلين</td>
+    <td>750</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم حب الشباب</td>
+    <td>750</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>لوشن تفتيح</td>
+    <td>750</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم مساج علاجي</td>
+    <td>750</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>مزيل عرق طبي</td>
+    <td>750</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>مقشر أحماض 15%</td>
+    <td>750</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>تونر Hyaluronic + Niacinamide</td>
+    <td>813</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم ترميم</td>
+    <td>813</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>غسول لكل أنواع البشرة (ساليسيليك)</td>
+    <td>813</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>زيت مساج</td>
+    <td>825</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>غسول للجسم</td>
+    <td>875</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>لوشن تفتيح + Sun Block</td>
+    <td>875</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>ترميم فازلين للشعر</td>
+    <td>938</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>سيرم تساقط</td>
+    <td>938</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم تفتيح مؤقت</td>
+    <td>938</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>واكس حواجب</td>
+    <td>938</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>واكس شعر</td>
+    <td>938</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>سكرب شعر للقشرة والتساقط</td>
+    <td>1000</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>بيكي ميست</td>
+    <td>1000</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>غسول حب الشباب</td>
+    <td>1000</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم تشققات</td>
+    <td>1000</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم مرطب يوريا</td>
+    <td>1000</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>مقشر أحماض أحمر</td>
+    <td>1000</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>مخمرية فازلين</td>
+    <td>1050</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>بادي سبلاش 10%</td>
+    <td>1063</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>تونر Hyaluronic</td>
+    <td>1063</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>قاعدة كريم التفتيح</td>
+    <td>1063</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم تفتيح المناطق الحساسة</td>
+    <td>1063</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Hair Mist 10%</td>
+    <td>1063</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم مرطب يوريا (كبير)</td>
+    <td>1125</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>بروتيز (صغير)</td>
+    <td>1125</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>زيت تصفيف</td>
+    <td>1125</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>سيرم كولاجين</td>
+    <td>1125</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>سيرم وجه Niacinamide</td>
+    <td>1125</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Sun Block 10%</td>
+    <td>1125</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم مسكن</td>
+    <td>1125</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>لوشن للبشرة الجافة 900</td>
+    <td>1125</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>تونر Hyaluronic + Niacinamide</td>
+    <td>1250</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Dry Oil Shimmer</td>
+    <td>1250</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>سيرم Vitamin C</td>
+    <td>1250</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم تجاعيد</td>
+    <td>1250</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>سيرم هالات</td>
+    <td>1375</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Foot Balm</td>
+    <td>1375</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>واكس العنكبوت</td>
+    <td>1375</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>سيرم وجه Hyaluronic Acid</td>
+    <td>1387</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>زبدة آيس كريم</td>
+    <td>1490</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>سيرم وجه Hyaluronic + Niacinamide</td>
+    <td>1500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>سيرم وجه Hyaluronic + Collagen</td>
+    <td>1500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Sun Block 20%</td>
+    <td>1500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>قاعدة مخمرية سيرم</td>
+    <td>1500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>مقشر أحماض 50%</td>
+    <td>1500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>سيرم شعر 50%</td>
+    <td>1750</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>بادي باتر</td>
+    <td>1875</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>بروتيز</td>
+    <td>1875</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>تنت استيك بالرش</td>
+    <td>1875</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>سيرم شعر 60%</td>
+    <td>1875</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>ليب بالم</td>
+    <td>1875</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>مخمرية سيرم</td>
+    <td>1875</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>بيكي بالم</td>
+    <td>2000</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>بيكي ميست</td>
+    <td>2000</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>%سيرم شعر 70</td>
+    <td>2000</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Hair Mist 20%</td>
+    <td>2000</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Sun Block 30%</td>
+   <td>2125</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>زيت إنبات وإطالة</td>
+    <td>2500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Sun Block 40%</td>
+    <td>2500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>فيلر</td>
+    <td>2500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>مقشر أحماض فواكه 10%</td>
+    <td>2500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>سيرم رموش وحواجب</td>
+    <td>2625</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم تصبغات</td>
+    <td>2625</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم تفتيح علاجي</td>
+    <td>2625</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>سيرم الأظافر</td>
+    <td>3000</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>كريم هالات</td>
+    <td>3000</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>مقشر أحماض فواكه 15%</td>
+    <td>3125</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Sun Block 50%</td>
+    <td>3250</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>بروتيز (كبير)</td>
+    <td>3750</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>زيت إنبات وإطالة (إكسترا)</td>
+    <td>3750</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>مقشر أحماض فواكه 20%</td>
+    <td>3750</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>مقشر أحماض فواكه 30%</td>
+    <td>6375</td>
+    <td>كيلو</td>
+</table>
+<table id="silicone">
+
+<tr>
+<th>اسم الخام</th>
+<th>السعر Kg</th>
+<th>الوحدة</th>
+</tr>
+
+<tr>
+<td>SILICON ANTI FOAM 30% 
+</td>
+<td>350</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>SILICON EMULSION 1785 
+</td>
+<td>440</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>SILICON 100 </td>
+<td>595</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>SILICON 1501</td>
+<td>595</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Cyclopentasiloxane SILICON 245 CPS
+</td>
+<td>595</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>SILICON OIL 350 
+</td>
+<td>595</td>
+<td>كيلو</td>
+</tr>
+
+
+<tr>
+<td>SILICON  1000
+</td>
+<td>595</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>SILICON 60000 
+</td>
+<td>655</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> SILICON 12500
+</td>
+<td>655</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>SILICON LIQUID PEG 8    
+</td>
+<td>680</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>SILICON EMULSION 346  
+</td>
+<td>680</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>SILICON LIQUID PEG 12   
+</td>
+<td>1080</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>SILICON ELASTOMER 9045
+</td>
+<td>5400</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>SILICON GEL   
+</td>
+<td>6400</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>SILICON GEL   
+</td>
+<td>6400</td>
+<td>كيلو</td>
+</tr>
+
+</table>
+
+
+<table id="vitamins">
+
+<tr>
+<th>اسم الخامه</th>
+<th>سعر ال50 جرام</th>
+<th>سعر</th>
+<th>الوحدة</th>
+
+
+<tr>
+<td>VITAMINE B3 </td>
+<td>130</td>
+<td>2600 </td>
+<td>كيلو</td>
+
+</tr>
+
+<tr>
+<td>Vitamine c  </td>
+<td>130</td>
+<td>2600</td>
+<td>كيلو</td>
+
+</tr>
+
+<tr>
+<td>Niasinamide- Vit.B3 </td>
+
+<td>140</td>
+<td>2800</td>
+<td>كيلو</td>
+
+</tr>
+
+<tr>
+<td> B5 DEPANTHENOL </td>
+<td>140</td>
+<td>2800</td>
+<td>كيلو</td>
+
+</tr>
+
+
+<tr>
+<td>VITAMINE E OILY  </td>
+
+<td>220</td>
+<td>4400</td>
+<td>كيلو</td>
+
+</tr>
+
+<tr>
+<td>ASCORBIC ACID (VIT C)</td>
+<td>240</td>
+<td>4800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> AVITAMINE A </td>
+
+<td>615</td>
+<td>12300</td>
+<td>كيلو</td>
+
+</tr>
+
+<tr>
+<td>SCORBYL PALMITATE VITAMINE C 
+</td>
+<td>440</td>
+<td>8800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>LIPOSONE VITAMA C</td>
+
+<td>1600</td>
+<td>32000</td>
+<td>كيلو</td>
+
+</tr>
+
+</table>
+
+<table id="butter">
+
+<tr>
+<th>النوع</th>
+<th>السعر Kg</th>
+<th>الوحدة</th>
+</tr>
+
+<tr>
+<td> WHITE SHEA BUTTER زبده شيا بيضاء غير مكرره 
+</td>
+<td>780</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>COCONUT BUTTERزبده جوز هند 
+</td>
+<td>960</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زبده شيا صفراء YELLOW BUTTER
+</td>
+<td>980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زبده فراوله strawbeery butter
+</td>
+<td>980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Shea butter (off White) HG ghana زبده شيا  غاني عاجي
+</td>
+<td>990</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>ORANGE BUTTER زبده برتقال 
+</td>
+<td>1030</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>MANGO BUTTERزبده مانجو    
+</td>
+<td>1030</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زبده ليمون LEMON BUTTER
+</td>
+<td>1050</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>COFFE BUTTERزبده قهوه
+</td>
+<td>1090</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زبده افوكادوا AVOCADO BUTTER
+</td>
+<td>1200</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زبده كاكاوcoca butter
+</td>
+<td>2990</td>
+<td>كيلو</td>
+</tr>
+</table>
+<table id="wax">
+
+<tr>
+<th>اسم الشمع</th>
+<th>السعر Kg</th>
+<th>الوحدة</th>
+</tr>
+
+<tr>
+<td> stearic acidاستيارك اسيد
+</td>
+<td>220</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Paraffin Wax شمع برافين 
+</td>
+<td>240</td>
+<td>كيلو</td>
+</tr>
+
+
+<tr>
+<td>  CETYL ALCOHOL (شمع بلسم)LANET 16 لانت
+</td>
+<td>240</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> لانت OLANET O (شمع بلسم)CETO CETRYL ALCOHOL
+</td>
+<td>260</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>glyceyl mono stearate flakes gmsجي ام اس قشور
+</td>
+<td>360</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Glyceryl Monostearate GMS SE جي ام اس جلسريال مونو ستياريت بودر
+</td>
+<td>360</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> EMULGEN B3 ايمالجين بي3
+</td>
+<td>460</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> EMULGEN B2 ايمالجين بي 2
+</td>
+<td>480</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>  ايمالسفين واكسEMULSFYING WAX
+</td>
+<td>485</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> BEES WAXشمع عسل
+</td>
+<td>490</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>شمع صويا Soy Wax
+</td>
+<td>600</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>LANET N لانت 
+</td>
+<td>640</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>BC WAX
+</td>
+<td>680</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>glyceryl stearate & peg 100 stearate
+</td>
+<td>900</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Microcrystalline Waxشمع ميكروكريستالين /شيرازين
+</td>
+<td>980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>E WAXاي واكس
+</td>
+<td>980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>CARNOBA WAX شمع كارنوبا
+</td>
+<td>
+1250</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>BTMS 50 POWDERحبيبات btms 50  
+</td>
+<td>
+1380</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>BTMS 50 PEELSقشور btms 50  
+</td>
+<td>
+1380</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>  BTMS 80 PEELS
+</td>
+<td>
+1380</td>
+<td>كيلو</td>
+</tr>
+</table>
+<table id="detergent">
+
+<tr>
+<th>اسم الماده الفعاله</th>
+<th>السعر</th>
+<th>الوحدة</th>
+</tr>
+
+<tr>
+<td>  حمض السيتريك citric acid
+</td>
+<td>
+140</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>NIPACID CMIT ماده حافظه نيباسيد       
+</td>
+<td>
+199</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Boric Acidبوريك اسيد
+</td>
+<td>
+360</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>bicrol ws1 بيكرول
+</td>
+<td>
+380</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>اسيتون ACETONE
+</td>
+<td>
+420</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Spirulina powder سبيرولينا بودر
+</td>
+<td>
+460</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>DMDM Hydantoin دم دم
+</td>
+<td>
+680</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>BENZYL BENZOATEبنزوات البنزيل
+</td>
+<td>
+940</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>optiphen plus
+</td>
+<td>
+980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زنك اوكسيد نانو Zinc oxide nano
+</td>
+<td>
+980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>OPTIPHENاوبتفين   
+</td>
+<td>
+980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>MMPمثبت عطري
+</td>
+<td>
+1050</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>BROPYL BARABENبروبيل برابين
+</td>
+<td>
+1200</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> METHYL PARABEN ميثيل بارابين 
+</td>
+<td>
+1200</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> METHYL SALICYLATEميثيل سالسيلات
+</td>
+<td>
+1200</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> BHT مانع تزرنخ
+</td>
+<td>
+1400</td>
+<td>كيلو</td>
+</tr>
+
+
+<tr>
+<td> active Hydroxyethylcellulose  HEC
+</td>
+<td>
+1400</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>جيرمابلGERMA BEL 
+</td>
+<td>
+1800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Chloroxylenol (PCMX) كلوريزينول
+</td>
+<td>
+1650</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>هيدروجارHYDRO GAR 
+</td>
+<td>
+1700</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>ALLANTOIN الانتوين
+</td>
+<td>
+1800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>CHORO HEXIDEN DI GLUCONATE كلوروهيكسيدين داي جلوكونات
+</td>
+<td>
+1850</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>EHG ETHYL HEXYL GLYCERINE
+</td>
+<td>
+2200</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زنك ريزنيوليت زيتي ZINC RICIONLATE OILY 
+</td>
+<td>
+2400</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>KOJIC ACID كوجيك اسيد
+</td>
+<td>
+2400</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>كولاجين بحري بودرCollagen powder (Marine) 
+</td>
+<td>
+2400</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>كولاجين بقري BOVINE COLLAGEN 
+</td>
+<td>
+2400</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>صوديوم فلورايدSODIUM FLOURIDE
+</td>
+<td>
+2400</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>p wheat proteinبروتين قمح  
+</td>
+<td>
+2900</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>جيرما بلس  GERMA PLUS 
+</td>
+<td>
+2900</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>هيدروليزيد كيراتين سائلHYDROLOYXED KERATINE
+</td>
+<td>
+3200</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>جلايسين GLYCEEN
+</td>
+<td>
+3200</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>lido caiien baseليدو كايين بيز
+</td>
+<td>
+3400</td>
+<td>كيلو</td>
+
+<tr>
+<td>p soy proteinبروتين صويا
+</td>
+<td>
+3400</td>
+<td>كيلو</td>
+
+
+<tr>
+<td>CREATINE LIQUID كيرياتين سائل
+</td>
+<td>
+3600</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>ZINC PYROTHONE 50% زنك بيريثيون
+</td>
+<td>
+3800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>حمض الازليك Azelaic acid
+</td>
+<td>
+3800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Hydroquinone HQ هيدروكينون
+</td>
+<td>
+3900</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>ZINC PYROTHONE 50% زنك بيريثيون
+</td>
+<td>
+3900</td>
+<td>كيلو</td>
+
+
+<tr>
+<td>p keratein proteinبروتين كرياتين 
+</td>
+<td>
+3900</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>p milk proteinبروتين حليب 
+</td>
+<td>
+3900</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>p silk proteinبروتين حرير
+</td>
+<td>
+3900</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>BENZOPHENONE 3 بنزوفينون 
+</td>
+<td>
+3800</td>
+<td>كيلو</td>
+</tr>
+
+
+<tr>
+<td>LEDO CAIIEN HCL ليدوكيين
+</td>
+<td>
+3900</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>ايلاستين elastein
+</td>
+<td>
+4200</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>L-Arginine ال ارجنين
+</td>
+<td>
+4400</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>PQ37 بولي كوارتيرنيوم سائل 
+</td>
+<td>
+4600</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Povidone Iodine بوفيدين ايودين 
+</td>
+<td>
+4600</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>BIROCTON OLMINE liquid بيركتون اولامين سائل
+</td>
+<td>
+4800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>p vegetable proteinبروتين خضراوات
+</td>
+<td>
+5400</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Cetrimide POWDER سيتراميد 
+</td>
+<td>
+5800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>بيوتينBIOTIN
+</td>
+<td>
+6000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>p keratein nanoكرياتين نانو
+</td>
+<td>
+6200</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>p nano protein بروتين نانو
+</td>
+<td>
+6200</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Benzophenone 4 بنزوفينون
+</td>
+<td>
+6200</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>افوبنزونAVOBENZONE
+</td>
+<td>
+7700</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>TCA TRI CHOLORO ACETIC ACIDتراي كلورو اسيتك اسيد tca
+</td>
+<td>
+7800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>TRI CLOXANتراي كلوزان
+</td>
+<td>
+8800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>ريزوسينول Resorcinol
+</td>
+<td>
+8800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>CAFFIEN POWDERكافيين بودر
+</td>
+<td>
+9000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>COLLAGEN MARINE LIQUIDكولاجين بحري سائل
+</td>
+<td>
+9800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>KOJIC DIPALMITATE  كوجيك داي بالميتات زيتي  
+</td>
+<td>
+10800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Mandelic acid ماندليك اسيد 
+</td>
+<td>
+12000</td>
+<td>كيلو</td>
+</tr>
+
+
+
+<tr>
+<td>PQ 67 POWDER  بودر pq 67    
+</td>
+<td>
+12200</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>p yeast proteinبروتين خميره 
+</td>
+<td>
+12300</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>ألفا أربوتين ALPHA ARBUTIN
+</td>
+<td>
+12800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>SQUALINEسكوالين
+</td>
+<td>
+14800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>جلوتاثيونGLUTATATHION 
+</td>
+<td>
+18000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>RENTOILرينتيول
+</td>
+<td>
+18000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>كابيسكيوم ريزنCapsicum (Capsaicin) Resin
+</td>
+<td>
+18000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>كافيين سائل CAFFIEN LIQUID
+</td>
+<td>
+18000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>ماغنسيوم سكوربيال فوسفات mapMagnesium Ascorbyl phosphate MAP 
+</td>
+<td>
+18000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>  صوديوم هالورنيتSODIUM HYALRONATE
+</td>
+<td>
+19000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>حمض الترانيكساميك tranexamic acid
+</td>
+<td>
+23000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>SODIUM Ascorbyl phosphate SAP صوديوم سكوربيال فوسفات
+</td>
+<td>
+28000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زنكZINC PCA 
+</td>
+<td>
+33000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>CERAMIDE LIQUIDسيراميد سائل
+</td>
+<td>
+33500</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>AZELIC ACID ازليك اسيد
+</td>
+<td>
+36000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>HYLORNIC HMW هالورنيك كبير الجزيئات 800
+</td>
+<td>
+38000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>HYLORNIC HMW هالورنيك متوسط 200
+</td>
+<td>
+38000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>بروكابيل PROCAPIL
+</td>
+<td>
+42000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>HYLORNIC LMW هالورنيك صغير الجزيئات 50
+</td>
+<td>
+48000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Ceramide POWDERسيراميد بودر
+</td>
+<td>
+53400</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>HYLORNIC NANOهالورنيك نانو 10
+</td>
+<td>
+55000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>كابكسيل CAPAXIL
+</td>
+<td>
+56000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>ريدنسيل Redinsil
+</td>
+<td>
+58000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>امبروكسان AMPROXAN POWDER
+</td>
+<td>
+82000</td>
+<td>كيلو</td>
+</tr>
+</table>
+
+<table id="colourmika">
+
+<tr>
+<th>اسم </th>
+<th>سعر ال 50 جرام  </th>
+<th>السعر</th>
+<th>الوحدة</th>
+</tr>
+
+<tr>
+    <td>Silver Mica / مايكا سيلفر</td>
+    <td>90</td>
+    <td>1800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Gray Mica / مايكا رمادي</td>
+    <td>90</td>
+    <td>1800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Blue Mica / مايكا أزرق</td>
+    <td>90</td>
+    <td>1800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>White Mica / مايكا أبيض</td>
+    <td>90</td>
+    <td>1800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Pink Mica / مايكا بينك</td>
+    <td>90</td>
+    <td>1800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Green Mica / مايكا أخضر</td>
+    <td>95</td>
+    <td>1900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Brown Mica / مايكا بني</td>
+    <td>95</td>
+    <td>1900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Red Mica / مايكا أحمر</td>
+    <td>110</td>
+    <td>2200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Gold Mica / مايكا ذهبي</td>
+    <td>110</td>
+    <td>2200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Mauve Mica / مايكا موف</td>
+    <td>110</td>
+    <td>2200</td>
+    <td>كيلو</td>
+</tr>
+
+</table>
+
+
+<table id="colourwater">
+
+<tr>
+<th>اللون </th>
+<th>سعر ال 50 جرام</th>
+<th>السعر</th>
+<th>الوحدة</th>
+</tr>
+
+<tr>
+    <td>Aquatic White 25% / أبيض مائي 25%</td>
+    <td>60</td>
+    <td>1200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Aquatic Black 25% / أسود مائي 25%</td>
+    <td>60</td>
+    <td>1200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Aquatic Red 25% / أحمر مائي 25%</td>
+    <td>60</td>
+    <td>1200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Aquatic Yellow 25% / أصفر مائي 25%</td>
+    <td>60</td>
+    <td>1200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Aquatic Green 25% / أخضر مائي 25%</td>
+    <td>60</td>
+    <td>1200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Aquatic Brown 25% / بني مائي 25%</td>
+    <td>60</td>
+    <td>1200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Aquatic Gold 25% / ذهبي مائي 25%</td>
+    <td>60</td>
+    <td>1200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Aquatic Pink 25% / بينك مائي 25%</td>
+    <td>60</td>
+    <td>1200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Aquatic Mauve 25% / موف مائي 25%</td>
+    <td>60</td>
+    <td>1200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Aquatic Light Blue 25% / أزرق فاتح مائي 25%</td>
+    <td>60</td>
+    <td>1200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Aquatic Orange 25% / برتقالي مائي 25%</td>
+    <td>60</td>
+    <td>1200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Aquatic Blue 25% / أزرق مائي 25%</td>
+    <td>80</td>
+</table>
+
+<table id="colouroil">
+
+<tr>
+<th>اللون </th>
+<th>سعر ال 50 جرام</th>
+<th>السعر</th>
+<th>الوحدة</th>
+</tr>
+
+
+<tr>
+    <td>Olive Brown / بني زيتي</td>
+    <td>180</td>
+    <td>3600</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Brown Pigment / بني بيجمنت</td>
+    <td>180</td>
+    <td>3600</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Red Oily / أحمر زيتي</td>
+    <td>180</td>
+    <td>3600</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>White Pigment / أبيض زيتي</td>
+    <td>220</td>
+    <td>4400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Red Pigment / أحمر بيجمنت</td>
+    <td>220</td>
+    <td>4400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Green Pigment / أخضر بيجمنت</td>
+    <td>220</td>
+    <td>4400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Orange Pigment / برتقالي بيجمنت</td>
+    <td>220</td>
+    <td>4400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Pink Pigment / بينك بيجمنت</td>
+    <td>220</td>
+    <td>4400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Black Pigment / أسود بيجمنت</td>
+    <td>245</td>
+    <td>4900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Blue Pigment / أزرق بيجمنت</td>
+    <td>290</td>
+    <td>5800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Blue Olive / أزرق أوليف</td>
+    <td>310</td>
+    <td>6200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Purple Olive / بنفسجي أوليف</td>
+    <td>340</td>
+    <td>6800</td>
+    <td>كيلو</td>
+</tr>
+</table>
+<table id="vegetable">
+
+<tr>
+<th>اسم الزيت</th>
+<th>السعر</th>
+<th>الوحدة</th>
+</tr>
+
+<tr>
+<td> Egyptian Castor Oiزيت خروع هندى ري
+</td>
+<td>280</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> CASTOR OIL INDIAN زيت خروع هندي 
+</td>
+<td>290</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Synthetic Coconut Oil زيت جوز هند صناعي  
+</td>
+<td>450</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Olive Oilزيت زيتون  
+</td>
+<td>480</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت ارز الابيض white rice oil
+</td>
+<td>480</td>
+<td>كيلو</td>
+</tr>
+<tr>
+<td>زيت خروع غذائيCastor oil 
+</td>
+<td>540</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت صنوبرPine oil 
+</td>
+<td>580</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Palm Oilزيت نخيل  
+</td>
+<td>645</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Virgin Olive Oilزيت زيتون بكر  
+</td>
+<td>679.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت جزر م as
+</td>
+<td>680</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت صفصاف م as
+</td>
+<td>680</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت صبار as
+</td>
+<td>680</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت شوفان
+</td>
+<td>680</td>
+<td>كيلو</td>
+</tr>
+<tr>
+<td>زيت شبت م as
+</td>
+<td>680</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت شاي اخضر م as
+</td>
+<td>680</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت زيتون غذائي
+</td>
+<td>680</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت روزماري asم 
+</td>
+<td>680</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت خيار م as
+</td>
+<td>680</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت قرتفل تجميليClove oil
+</td>
+<td>680</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Soybean Oilزيت فول الصويا 
+</td>
+<td>714</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Rockroot Oilزيت جرجير
+</td>
+<td>714</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Flax Oilزيت كتان
+</td>
+<td>714</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Egyptian Castor Oiزيت خروع مصري
+</td>
+<td>732</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Egyptian Castor Oiزيت خروع مصري
+</td>
+<td>766.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Mustard Oil زيت خردل 
+</td>
+<td>783</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت مشمش
+</td>
+<td>850</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Chili Oilزيت شطه
+</td>
+<td>859.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Bitter Lupine Oilزيت ترمس مر
+</td>
+<td>859.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Garlic Oil زيت ثوم تجميلي 
+</td>
+<td>860</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت  عسل 
+</td>
+<td>880</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت بقدونس تجميلي  
+</td>
+<td>880</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت حنظل م as
+</td>
+<td>880</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت خشب الارز تجميلي 
+</td>
+<td>880</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت خميرهYeast extract
+</td>
+<td>880</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت ريحان م as
+</td>
+<td>880</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت سمسم 
+</td>
+<td>880</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت سنتيلا Centella oil
+</td>
+<td>880</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت سواك م as
+</td>
+<td>880</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت فول الصويا asعصر
+</td>
+<td>880</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت نخيل غذائي 
+</td>
+<td>880</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت كمون
+
+</td>
+<td>880</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت كركم م as
+</td>
+<td>880</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت كركديه
+</td>
+<td>880</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت كاندويلا م as
+</td>
+<td>880</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Peanut Oilزيت فول سوداني
+</td>
+<td>904.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Egyptian Sesame Oilزيت سمسم مصري
+</td>
+<td>921</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Fenugreek Oil زيت حلبه  
+</td>
+<td>952</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Lemon Oilزيت ليمون
+</td>
+<td>952</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Lemon Oilزيت ليمون 
+</td>
+<td>952</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Mallow Oilزيت بذور ملوخيه
+</td>
+<td>952</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Oil Grapefruitزيت جريب فروت
+</td>
+<td>952</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Orange Oilزيت برتقال 
+</td>
+<td>952</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Peppermint Oilزيت نعناع 
+</td>
+<td>952</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Rosemary Oilزيت روز ماري 
+</td>
+<td>952</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Sage Oilزيت مريميه 
+</td>
+<td>952</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Amla Oilزيت املج
+</td>
+<td>967.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Wheat Germ Oilزيت جنين القمح
+</td>
+<td>970.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Thyme Oil زيت زعتر
+</td>
+<td>980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> 
+ زيت موز Bananaoil
+</td>
+<td>980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>CETRONELLA OIL زيت سترونيلا
+</td>
+<td>980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Grape Seed Oilزيت بذور العنب
+</td>
+<td>980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Lavender Oilزيت لافندار
+</td>
+<td>980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Rice Bran Oilزيت نخاله ارز
+</td>
+<td>980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت عرق سوس م as
+</td>
+<td>980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت قطران م as
+</td>
+<td>980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت كافور م as
+</td>
+<td>980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت كريز نباتى 
+</td>
+<td>980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت نواة البلح 
+</td>
+<td>980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Marrow Oilزيت النخاع
+</td>
+<td>990</td>
+<td>كيلو</td>
+</tr>
+<tr>
+<td>Primrose Oilزيت زهره الربيع
+</td>
+<td>1005</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Cedar Oil زيت السعد
+</td>
+<td>1045.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Chamomile Oil زيت بابونج
+</td>
+<td>1045.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Horsetail Oil زيت ذيل حصان
+</td>
+<td>1045.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Myrrh Oilزيت المر
+</td>
+<td>1045.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Okra Oilزيت باميه
+</td>
+<td>1045.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Rose Oilزيت ورد
+</td>
+<td>1045.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Sidr Oil زيت السدر
+</td>
+<td>1045.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Sweet Lupine Oilزيت ترمس حلو
+</td>
+<td>1045.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Thyme Oil زيت زعتر
+</td>
+<td>1045.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Clove Oil زبت قرنفل تجميلي  
+</td>
+<td>1046</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت بكوتشيل Bcochil oil 
+</td>
+<td>1050</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت جوز هند اساسي 
+</td>
+<td>1050</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Garden Cress Oilزيت حب الرشاد
+</td>
+<td>1077</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Frankincense Oilزيت لبان الدكر
+</td>
+<td>1077</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Radish Oilزيت الفجل
+</td>
+<td>1138.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Moringa Oilزيت المورينجا
+</td>
+<td>1138.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Lettuce Oilزيت خس
+</td>
+<td>1138.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Ginger Oilزيت الجنزبيل
+</td>
+<td>1138.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت جوز هند بكر
+</td>
+<td>1150</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Jojoba Oil زيت جوجوبا
+</td>
+<td>1150</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت جوجوبا غذائيNutritional jojoba oil
+</td>
+<td>1150</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت روز هيب 
+</td>
+<td>1240</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Grained Coconut Oilزيت جوز هند غذائي
+</td>
+<td>1250</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Black Seed Oil زيت حبه البركه
+</td>
+<td>1266</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت النيم م as
+</td>
+<td>1280</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Sunflower Oilزيت دوار الشمس
+</td>
+<td>1280</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Tea Tree Oilزيت شجره الشائ
+</td>
+<td>1300</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Jasmine Oilزيت الياسمين
+</td>
+<td>1324.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Mahlab Oilزيت المحلب
+</td>
+<td>1324.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Cardamom Oilزيت حبهان
+</td>
+<td>1324.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Cinnamon Oilزيت القرفه
+</td>
+<td>1335</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Cinnamon Oilزيت القرفه
+</td>
+<td>1335</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت فلفل اسود as
+</td>
+<td>1350</td>
+<td>كيلو</td>
+</tr>
+
+
+<tr>
+<td>زيت فلفل اسود as
+</td>
+<td>1350</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت توت اسود 
+</td>
+<td>1440</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت حبه البركه غذائي
+</td>
+<td>1450</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Fractionated coconut oil cctزيت جوز هند مجزء
+</td>
+<td>1600</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Shea Butter Oilزيت بذور الشيا
+</td>
+<td>1600</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Pumpkin Oilزيت قرع عسل 
+</td>
+<td>1680</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت قهوه م as 
+</td>
+<td>1800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت اوريجانو غذائيEdible oregano oil
+</td>
+<td>1980</td>
+<td>كيلو</td>
+</tr>
+
+
+<tr>
+<td> Squash Oil زيت يقطين 
+</td>
+<td>2025</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Hazelnut Oil زيت بندق
+</td>
+<td>2197</td>
+<td>كيلو</td>
+</tr> 
+
+<tr>
+<td>زيت خشب الصندل sandalwood oil
+</td>
+<td>2256</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Watermelon Oilزيت بذور بطيخ
+</td>
+<td>2256</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Avocado Oilزيت افوكادوا
+</td>
+<td>2370</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Walnut Oil زيت عين الجمل
+</td>
+<td>2370</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Onion Oilزيت بصل 
+</td>
+<td>2457</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت لوز حلو تجميلى
+</td>
+<td>3200</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت لوز حلو غذائي مستورد SWEET ALMOND OIL
+</td>
+<td>3600</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت البرجموت 
+</td>
+<td>5200</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت سيترونيلا اساسي CITRONELLA
+</td>
+<td>6800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت قرنفل غذائيClove oil
+</td>
+<td>6800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت روز  ورد غذائيRose oil
+</td>
+<td>6800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت شجره الشاي اساسي بيور
+</td>
+<td>6200</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت سيترونيلا اساسي CITRONELLA
+</td>
+<td>6800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Lemon Grass Oilزيت حشيشه الليمون اساسي
+</td>
+<td>8062.50</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت ارجان مغربي غذائيArgan oil
+</td>
+<td>8900</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت نعناع اساسيPeppermint oil
+</td>
+<td>9800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت نعناع غذائيPeppermint oil
+</td>
+<td>9800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت جرانيوم م as
+</td>
+<td>9800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Rose oil زيت ورد اساسي
+</td>
+<td>9900</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Imported Argan Oilزيت ارجان مستورد
+</td>
+<td>9900</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت روزماري اساسي غذائيRosemary oil
+</td>
+<td>10800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت حشيشه الليمون تجميليLemongrass oil
+</td>
+<td>12000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت جينسينج
+</td>
+<td>12000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت جيرانيوم اساسي
+</td>
+<td>12000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت ثوم غذائي
+</td>
+<td>12000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت يلانج اساسي
+</td>
+<td>12000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت يوسفي اساسي
+</td>
+<td>14800</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>زيت صنوبر اساسي
+</td>
+<td>15000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> Thyme Oilزيت زعتر اساسي
+</td>
+<td>15600</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت ريحان اساسي
+</td>
+<td>18000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> لبان دكر بيور اساسي
+</td>
+<td>19000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> camphor essential oil  زيت كافور اساسي
+</td>
+<td>19000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> زيت خشب الارز اساسي
+</td>
+<td>21000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Clove Oilزيت قرنفل اساسي
+</td>
+<td>21000</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Pure Prickly Pear Oilزيت تين شوكي بيور
+</td>
+<td>29000</td>
+<td>كيلو</td>
+</tr>
+
+</table>
+
+<table id="raw material">
+
+<tr>
+<th>اسم الخامه</th>
+<th>السعر Kg</th>
+<th>الوحدة</th>
+</tr>
+
+<<tr>
+    <th>اسم المادة</th>
+    <th>السعر</th>
+    <th>الوحدة</th>
+</tr>
+
+<tr>
+    <td>pH Adjuster / معدل الأس الهيدروجيني</td>
+    <td>50</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Distilled Water / ماء مقطر</td>
+    <td>60</td>
+    <td>لتر</td>
+</tr>
+
+<tr>
+    <td>Silica Sand / رمل السيليكا</td>
+    <td>75</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>White Silica Sand / رمل السيليكا الأبيض</td>
+    <td>75</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Bentonite / بنتونيت</td>
+    <td>90</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Methanol 99% / كحول ميثانول 99%</td>
+    <td>90</td>
+    <td>لتر</td>
+</tr>
+
+<tr>
+    <td>Agricultural Urea / يوريا زراعية</td>
+    <td>90</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Sodium Bicarbonate / بيكربونات الصوديوم</td>
+    <td>99</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Ethanol 70% / كحول 70%</td>
+    <td>100</td>
+    <td>لتر</td>
+</tr>
+
+<tr>
+    <td>Sodium Hydroxide Flakes 98% / هيدروكسيد الصوديوم 98%</td>
+    <td>110</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Kaolin / كاولين</td>
+    <td>120</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Soda Ash (Sodium Carbonate) / صودا آش</td>
+    <td>120</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Formalin / فورمالين</td>
+    <td>120</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Deodorized Ethanol 96% / كحول إيثانول 96%</td>
+    <td>135</td>
+    <td>لتر</td>
+</tr>
+
+<tr>
+    <td>Betaine BB4 / بيتائين BB4</td>
+    <td>140</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Citric Acid / حمض الستريك</td>
+    <td>140</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Deodorized Ethanol 99% / كحول إيثانول 99%</td>
+    <td>160</td>
+    <td>لتر</td>
+</tr>
+
+<tr>
+    <td>Talc Powder / بودرة التلك</td>
+    <td>160</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Citric Acid (Fine) / حمض الستريك الناعم</td>
+    <td>165</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Glycerin / جلسرين</td>
+    <td>170</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Texapon Gel /تكسابون جل </td>
+<td>170</td>
+ <td>كيلو</td>
+</tr>
+<tr>
+    <td>Glycerin Soap Base / قاعدة صابون الجلسرين</td>
+    <td>199</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Isopropyl Alcohol (IPA) 99.9% / كحول أيزوبروبانول 99.9%</td>
+    <td>199</td>
+    <td>لتر</td>
+</tr>
+
+<tr>
+    <td>Himalayan Salt / ملح الهيمالايا</td>
+    <td>220</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Triethanolamine (TEA) / تراي إيثانول أمين</td>
+    <td>220</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Phosphoric Acid / حمض الفوسفوريك</td>
+    <td>220</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Sulphonic Acid 90% / سلفونيك سائل 90%</td>
+    <td>230</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Acetic Acid / حمض الخليك</td>
+    <td>240</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Butyl Glycol / بيوتيل جليكول</td>
+    <td>240</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Sorbitol Liquid / سوربيتول سائل</td>
+    <td>240</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Hydrogen Peroxide 65% / ماء أكسجين 65%</td>
+    <td>240</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Cetrimonium Chloride / سيتريمونيوم كلوريد</td>
+    <td>260</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Activated Charcoal / فحم نشط</td>
+    <td>280</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Alpha Olefin Sulfonate (AOS) Liquid / ألفا أوليفين سلفونات سائل</td>
+    <td>280</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Borax / بوراكس</td>
+    <td>280</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Fabric Softener Paste / عجينة منعم الأقمشة</td>
+    <td>280</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Sodium Benzoate / بنزوات الصوديوم</td>
+    <td>280</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Oxalic Acid / حمض الأكساليك</td>
+    <td>280</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>STPP (Sodium Tripolyphosphate) / تراي بولي فوسفات الصوديوم</td>
+    <td>280</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Lilac Fragrance / عطر ليلاك</td>
+    <td>280</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Lactic Acid / حمض اللاكتيك</td>
+    <td>290</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Mono Propylene Glycol (MPG) / مونو بروبيلين جليكول</td>
+    <td>290</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>NP9 (Nonyl Phenol) / نونيل فينول NP9</td>
+    <td>300</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Tween 20 / توين 20</td>
+    <td>320</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Tween 80 / توين 80</td>
+    <td>320</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Eperlan / إيبرلان (مُصدّف)</td>
+    <td>320</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Dipropylene Glycol (DPG) / داي بروبيلين جليكول</td>
+    <td>330</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Optical Brightener / مظهر ضوئي</td>
+    <td>340</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Benzalkonium Chloride 80% / بنزالكونيوم كلوريد 80%</td>
+    <td>340</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Calcium Carbonate / كربونات الكالسيوم</td>
+    <td>350</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Coco Betaine (CAPB) / كوكو بيتائين</td>
+    <td>360</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Stearic Acid / حمض الستياريك</td>
+    <td>360</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Cetyl Alcohol / سيتيل الكحول</td>
+    <td>370</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Phenoxyethanol / فينوكسي إيثانول</td>
+    <td>380</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>EDTA Disodium / إيديتا ثنائي الصوديوم</td>
+    <td>390</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Lanolin Anhydrous / لانولين لا مائي</td>
+    <td>400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Cetearyl Alcohol / سيتياريل الكحول</td>
+    <td>420</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Carbomer 940 / كاربومر 940</td>
+    <td>430</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Emulsifying Wax / شمع الاستحلاب</td>
+    <td>440</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Beeswax Yellow / شمع العسل الأصفر</td>
+    <td>450</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Beeswax White / شمع العسل الأبيض</td>
+    <td>460</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Sodium Lauryl Ether Sulfate (SLES) / سليس</td>
+    <td>480</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Glycolic Acid / حمض الجليكوليك</td>
+    <td>500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Salicylic Acid / حمض الساليسيليك</td>
+    <td>520</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Urea Cosmetic Grade / يوريا تجميلية</td>
+    <td>540</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Allantoin / ألانتوين</td>
+    <td>560</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>D-Panthenol / دي بانثينول</td>
+    <td>580</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Xanthan Gum / صمغ الزانثان</td>
+    <td>600</td>
+    <td>كيلو</td>
+</tr>
+<tr>
+    <td>Sodium Sarcosinate / صوديوم ساركوزينات</td>
+    <td>400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Sodium Sulphoxanate / صوديوم سلفوكسانات</td>
+    <td>420</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Fatty Alcohol / الكحول الدهني</td>
+    <td>430</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Acusol 301 / أكيوسول 301</td>
+    <td>440</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Cremophor PEG-40 HCO / كريموفور PEG-40 HCO</td>
+    <td>440</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Lauramine Oxide / لورامين أوكسيد</td>
+    <td>440</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Potassium Sorbate / سوربات البوتاسيوم</td>
+    <td>440</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Texapon Powder / تكسابون بودرة</td>
+    <td>440</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>AOS Powder / ألفا أوليفين سلفونات بودرة</td>
+    <td>450</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>EDTA / إيديتا</td>
+    <td>480</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Cocoyl Glucoside / كوكويل جلوكوزيد</td>
+    <td>480</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Sodium Lauryl Sulphate (SLS) / صوديوم لوريل سلفات</td>
+    <td>480</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Sodium Lauryl Sarcosinate / صوديوم لوريل ساركوسينات</td>
+    <td>480</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Sodium Lactate / صوديوم لاكتات</td>
+    <td>480</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Zinc Oxide / أكسيد الزنك</td>
+    <td>480</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Xanthan Gum / صمغ الزانثان</td>
+    <td>485</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Decyl Glucoside / ديسيل جلوكوزيد</td>
+    <td>520</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>IPM (Isopropyl Myristate) / أي بي إم</td>
+    <td>540</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Phenoxyethanol / فينوكسي إيثانول</td>
+    <td>540</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Glyoxylic Acid / جلايكوكسيليك أسيد</td>
+    <td>555</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Cetoil HE / سيتويل HE</td>
+    <td>580</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Alkyl Polyglucoside (APG) / ألكيل بولي جلوكوزيد</td>
+    <td>590</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Tween 60 / توين 60</td>
+    <td>590</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Butyl Carbitol / بيوتيل كاربيتول</td>
+    <td>600</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Calcium Citrate / سترات الكالسيوم</td>
+    <td>600</td>
+    <td>كيلو</td>
+</tr>
+<tr>
+    <td>Aloe Vera Gel / جل الصبار</td>
+    <td>680</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Glycolic Acid / حمض الجليكوليك</td>
+    <td>690</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Lanolin Liquid / لانولين سائل</td>
+    <td>860</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Hydrogenated Castor Oil (HCO) Powder / زيت خروع مهدرج بودرة</td>
+    <td>880</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>PEG-6 Caprylic/Capric Glycerides (Water Soluble) / PEG-6 قابل للذوبان في الماء</td>
+    <td>900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Carbopol / كاربوبول</td>
+    <td>980</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Aluminium Chlorohydrate Powder / كلوروهيدرات الألومنيوم بودرة</td>
+    <td>980</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Benzoic Acid / حمض البنزويك</td>
+    <td>980</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Aloe Vera Gel (Natural) / جل الصبار الطبيعي</td>
+    <td>1100</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Caprylyl / Capryl Glucoside / كابريليل / كابريل جلوكوزيد</td>
+    <td>1100</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Isopropyl Palmitate (IPP) / أيزوبروبيل بالميتات</td>
+    <td>1150</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Titanium Dioxide (White) / ثاني أكسيد التيتانيوم الأبيض</td>
+    <td>1200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Milk Powder / حليب جوز الهند بودرة</td>
+    <td>1200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>CMC Cosmetic Grade / CMC تجميلي</td>
+    <td>1200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Polyvinyl Pyrrolidone (PVP K30) / بولي فينيل بيروليدون K30</td>
+    <td>1280</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>PEG-6 Caprylic/Capric Glycerides (Oil Soluble) / PEG-6 قابل للذوبان في الزيت</td>
+    <td>1300</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Sodium Saccharin / سكارين الصوديوم</td>
+    <td>1300</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Caprylic/Capric Triglycerides / كابريليك كابريك ترايجليسريد</td>
+    <td>1400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Coco MG / كوكو MG</td>
+    <td>1400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Cosmedia Guar / كوزميديا جوار</td>
+    <td>1480</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Fumed Silica / فيومد سيليكا</td>
+    <td>1600</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Sodium Cocoyl Isethionate (SCI) / صوديوم كوكويل أيزيثيونات</td>
+    <td>1600</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Polyvinyl Pyrrolidone (PVP K90) / بولي فينيل بيروليدون K90</td>
+    <td>1600</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>PQ-22 / بي كيو 22</td>
+    <td>1800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Aerosil / أيروسيل</td>
+    <td>1900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Menthol Crystals / بلورات المنتول</td>
+    <td>2400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Viscolam / فيسكولام</td>
+    <td>2400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Blue Indigo / النيلة الزرقاء</td>
+    <td>2600</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Lanolin Wax / شمع اللانولين</td>
+    <td>2800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Thymol Crystals / بلورات الثيمول</td>
+    <td>2800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Polyamide / بولي أميد</td>
+    <td>2800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>PQ-10 / بي كيو 10</td>
+    <td>3200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Versagel / فيرساجيل</td>
+    <td>4800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Octocrylene / أوكتوكريلين</td>
+    <td>4900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Octyl Methoxycinnamate (OMC) / أوكتيل ميثوكسي سيناميت</td>
+    <td>4900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>PEG-90M Powder / PEG-90M بودرة</td>
+    <td>9200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Potassium Iodide / يوديد البوتاسيوم</td>
+    <td>9000</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Mandelic Acid / حمض الماندليك</td>
+    <td>12000</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Lanolin Alcohol / كحول اللانولين</td>
+    <td>24800</td>
+    <td>كيلو</td>
+</tr>
+
+
+</table>
+
+
+
+
+<table id="hydrosol">
+
+<tr>
+<th>الهيدروسول</th>
+<th>السعر</th>
+<th>الوحدة</th>
+</tr>
+
+<tr>
+<td>هيدرسول شجرة الشاي
+</td>
+<td>140</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول زعتر  - Thyme
+</td>
+<td>199</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدرسول ورد
+</td>
+<td>200</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول روز ماري  - Rosemary
+</td>
+<td>208</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول نعناع - Peppermint
+</td>
+<td>208</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول رمان - Pomegranate
+</td>
+<td>217</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدرسول ورق الجوافة
+</td>
+<td>217</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول الصبار - Aloe Vera
+</td>
+<td>217</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول خيار - Cucumber
+</td>
+<td>217</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول ترمس مر  - Bitter Lupine
+</td>
+<td>217</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول ورق جوافه  - Guava Leaf
+</td>
+<td>217</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول عرقسوس - Licorice
+</td>
+<td>217</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول شوفان - Oats
+</td>
+<td>217</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول بقدونس - Parsley
+</td>
+<td>217</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول تفاح - Apple
+</td>
+<td>226</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول تين شوكي  - Prickly pear
+</td>
+<td>226</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول الارز - Rice
+</td>
+<td>226</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول شمر - Fennel
+</td>
+<td>226</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول ورق غار  - Bay Leaf
+</td>
+<td>226</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول ورق سدر - Sidr Leaf
+</td>
+<td>226</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول نن - Nan
+</td>
+<td>226</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول ملوخيه - Mallow
+</td>
+<td>226</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول لارينج - Laryngum
+</td>
+<td>226</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول بصل - Onion
+</td>
+<td>226</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول حشيشيه ليمون  - Lemon
+</td>
+<td>226</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول حلبه  - Fenugreek
+</td>
+<td>226</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول جرجير - Arugula
+</td>
+<td>235</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول جوز الهند - Coconut
+</td>
+<td>235</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول خرشوف  - Artichoke
+</td>
+<td>235</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول بابونج - Chamomile
+</td>
+<td>235</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول كزبره - Coriander
+</td>
+<td>235</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول عنب الدب - Bearberry
+</td>
+<td>235</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول ماء ورد - Rose Water
+</td>
+<td>235</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول ورق خروع - Castor Leaf
+</td>
+<td>235</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول ترمس حلو  - Sweet Lupine
+</td>
+<td>236</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول ريحان  - Basil
+</td>
+<td>244</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول بابونج - Chamomile
+</td>
+<td>244</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول بذور شيا - Pure Shea
+</td>
+<td>244</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول قهوه - Coffee 
+</td>
+<td>244</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول شبت - Dill
+</td>
+<td>244</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول شاي اخضر - Green Tea 
+</td>
+<td>244</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول ريحان  - Basil 
+</td>
+<td>244</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول كراويه - Caraway 
+</td>
+<td>244</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول كركم - Turmeric 
+</td>
+<td>244</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول كمون - Cumin 
+</td>
+<td>244</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول لافندر - Lavender 
+</td>
+<td>244</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول ليمون  - Lemon 
+</td>
+<td>244</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول ينسون - Anise 
+</td>
+<td>244</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول برتقال - Orange 
+</td>
+<td>244</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول مريميه - Sage 
+</td>
+<td>253</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول ورق التوت - Mulberry leaves 
+</td>
+<td>253</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول كف مريم - Chasteberry 
+</td>
+<td>253</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول كركديه - Hibiscus 
+</td>
+<td>253</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدرسول بذور كتان
+</td>
+<td>260</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول ياسمين - Jasmine
+</td>
+<td>262</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول قرفه - Cinnamon
+</td>
+<td>262</td>
+<td>الكيلو</td>
+</tr>
+
+<td>هيدروسول ريزيتا - Rice
+</td>
+<td>262</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول افوكادو - Avocado
+</td>
+<td>262</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول مزيل عرق - Deodorant
+</td>
+<td>280</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول لبان دكر - Frankincense
+</td>
+<td>289</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول زنجبيل - Ginger
+</td>
+<td>289</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول قرنفل - Cloves
+</td>
+<td>289</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول السعد - Cedar
+</td>
+<td>289</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول القهوه - Coffee
+</td>
+<td>290</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول نيم - Neem
+</td>
+<td>307</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول جيرانيوم - Geranium
+</td>
+<td>325</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول خيار شمبر - Stem cucumber
+</td>
+<td>325</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول مورينجا - Moringa
+</td>
+<td>325</td>
+<td>الكيلو</td>
+</tr>
+
+
+<tr>
+<td>هيدروسول جينكوبلوبا  - Ginkgo Biloba
+</td>
+<td>325</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدرسول محلب
+</td>
+<td>340</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول ذيل حصان - Horsetail
+</td>
+<td>343</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول مسك الليل - Night Musk
+</td>
+<td>379</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول قسط هندي  - Indian Costus
+</td>
+<td>379</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول المر - Myrrh
+</td>
+<td>379</td>
+<td>الكيلو</td>
+</tr>
+
+<tr>
+<td>هيدروسول حبهان - Cardamom
+</td>
+<td>379</td>
+<td>الكيلو</td>
+</tr>
+
+</table>
+
+<table id="extract">
+
+<tr>
+<th>المستخلص</th>
+<th>السعر</th>
+<th>الوحدة</th>
+</tr>
+
+<tr>
+<td> مستخلص خوخ مائيpeach extract
+</td>
+<td>480</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> مستخلص قشر رمان  -Pomegranate Peel Extract
+</td>
+<td>504.20</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> مستخلص نبات القراص -Nettle Extract
+</td>
+<td>504.20</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص ارز -Extract Rice
+</td>
+<td>596</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص برتقال  -Orange Extract
+</td>
+<td>596</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص تانن -Tan Extract
+</td>
+<td>596</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص جرجير -Rocket Extract
+</td>
+<td>596</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص شبت  -Dill Extract
+</td>
+<td>596</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص ليمون  -Lemon Extract
+</td>
+<td>596</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص ورق خروع -Castor Leaf Extract
+</td>
+<td>596</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه خردل -Mustard Extract
+</td>
+<td>606.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه كافور -Camphor Extract
+</td>
+<td>606.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه شوفان  -Oat Extract
+</td>
+<td>633.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص ترمس مر  -Bitter Lupin Extract
+</td>
+<td>633.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص جزر -Carrot Extract
+</td>
+<td>633.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص خيار  -Cucumber Extract
+</td>
+<td>633.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص صبار -Aloe Vera Extract
+</td>
+<td>633.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص طماطم -Tomato Extract
+</td>
+<td>633.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص ورق الزيتون -Olive Leaf Extract
+</td>
+<td>633.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص ورق جوافه  -Guava Leaf Extract
+</td>
+<td>633.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص ورق غار  -Bay Leaf Extract
+</td>
+<td>633.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه فجل  -Radish Extract
+</td>
+<td>651.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستحلص روز ماري  -Rosemary Extract
+</td>
+<td>651.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص بقدونس -Parsley Extract
+</td>
+<td>651.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص زعتر  -Thyme Extract
+</td>
+<td>651.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص صفصاف -Willow Extract
+</td>
+<td>651.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص كانديولا  -Canediola Extract
+</td>
+<td>651.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص كف مريم  -Chasteberry Extract
+</td>
+<td>651.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه ترمس حلو -Sw Lupin Extracteet
+</td>
+<td>660.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه خرشوف -Artichoke Extract
+</td>
+<td>660.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه السعد -Cyperus Extract
+</td>
+<td>660.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه حشيشيه ليمون -Lemon Grass Extract
+</td>
+<td>669.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه نعناع  -Peppermint Extract
+</td>
+<td>669.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه ينسون  -Anise Extract
+</td>
+<td>669.80</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه كافور -Camphor Extract
+</td>
+<td>680.00</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> مستخلص حنظل  colocynth
+</td>
+<td>680.00</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Ashwagandha مستحلص الاشوجندا m
+</td>
+<td>680.00</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Mustard extractMustard extract
+
+</td>
+<td>680.00</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>حشيشه ليمون خلاصه -LAMON BALM Extracteet
+</td>
+<td>680.00</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه حبه بركه  -Baraka Seed Extract
+</td>
+<td>680.00</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه قرنفل -Clove Extract
+</td>
+<td>680.00</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص اوريجانو
+</td>
+<td>680.00</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه حلبه  -Fenugreek Extract
+</td>
+<td>680.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص مشمش  -Apricot Extract
+</td>
+<td>689.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه كركديه -Hibiscus Extract
+</td>
+<td>689.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه لوز حلو -Sweet Almond Extract
+</td>
+<td>689.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستحلص مريميه  -Sage Extract
+</td>
+<td>689.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص افوكادو -Avocado Extract
+</td>
+<td>689.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص الشعير  -Barley Extract
+</td>
+<td>689.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص حليب الشوك -Milk Thistle Extract
+</td>
+<td>689.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص زيل حصان -Horsetail Extract
+</td>
+<td>689.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص عنب الدب -Urban Blueberry Extract
+</td>
+<td>689.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص فول صويا -Soybean Extract
+</td>
+<td>689.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه شاي اخضر -Green Tea Extract
+</td>
+<td>689.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه بور  لفت -Boarweed Extract
+</td>
+<td>689.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه شوك الجمل -Camel Thistle Extract
+</td>
+<td>707.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه لافندر  -Lavender Extract
+</td>
+<td>707.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص تفاح  -Apple Extract
+</td>
+<td>707.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه فراوله -Strawberry Extract
+</td>
+<td>734.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص ورد -Rose Extract
+</td>
+<td>743.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص ورق سدر -Sidr Leaf Extract
+</td>
+<td>743.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه بندق  -Hazelnut Extract
+</td>
+<td>754.40
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه موز -Banana Extract
+</td>
+<td>763.40
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه يقطين -Pumpkin Extract
+</td>
+<td>780
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص بلميط[مستخلصاتextracts]  
+</td>
+<td>780
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص لبان دكر -Frankincense Extract
+</td>
+<td>780
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص موينجا -Moinga Extract
+</td>
+<td>781.40
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص قشر جمبري  -Shrimp Peel Extract
+</td>
+<td>781.40
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص تين شوكي  -Prickly Pear Extract
+</td>
+<td>781.40
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص اوراق النيم -Neem Leaf Extract
+</td>
+<td>781.40
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص املج -Amla Extract
+</td>
+<td>781.40
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص الاشواجندا -Ashwagandha Extract
+</td>
+<td>781.40
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه كركم -Turmeric Extract
+</td>
+<td>781.40
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه قرع  -Pumpkin Extract
+</td>
+<td>781.40
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه قرع  -Pumpkin Extract
+</td>
+<td>781.40
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه عصفر -Safflower Extract
+</td>
+<td>781.40
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه شيكاكي -Shikakai Extract
+</td>
+<td>781.40
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص قرفه  
+</td>
+<td>880
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه مر زيتيه  -Myrrh Oil Extract
+</td>
+<td>846.20
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه ويتش هازل -Witch Hazel Extract
+</td>
+<td>846.20
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه جريب فروت -Grapefruit Extract
+</td>
+<td>846.20
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه السكران  Cyperus Extract 
+</td>
+<td>873.20
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه طحالب بحريه Seaweed Extract 
+</td>
+<td>873.20
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه بابايا Papaya Extract
+</td>
+<td>873.20
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص جنزبيل Ginger Extract 
+</td>
+<td>873.20
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Lychee Fruit Extract خلاصه فاكهه الليتشي
+</td>
+<td>873.20
+</td>
+<td>كيلو</td>
+</tr>
+
+
+<tr>
+<td>مستخلص روز ماري 
+</td>
+<td>880
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Grape seed Extract خلاصه بذور العنب 
+</td>
+<td>900
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص ذيل الحصان 
+</td>
+<td>900
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه اناناس Pineapple Extract
+</td>
+<td>938
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه فاكهه التنين Fig Fruit Extract
+</td>
+<td>965
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه جينسينج Ginseng Extract
+</td>
+<td>965
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص قسط هندي Indian Costus Extract 
+</td>
+<td>965
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص الشطه Chili Pepper Extract 
+</td>
+<td>965
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص ريحان Basil Extract 
+</td>
+<td>980
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص عسل Honey Extract 
+</td>
+<td>980
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Mulberry Extract خلاصه توت 
+</td>
+<td>980
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه بصل ابيض  White Onion Extract
+</td>
+<td>980
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستلخص بابونج  -Chamomile Extract
+</td>
+<td>980</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه كركم زيتيه Turmeric Oil Extract
+</td>
+<td>1029.80
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص مر بطارخ Bitter Roe Extract
+</td>
+<td>1058.60
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه قهوه مائي Coffee Extract
+</td>
+<td>1080
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه قهوه زيتي Coffee Oil Extract 
+</td>
+<td>1080
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه كافيين
+</td>
+<td>1080
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص عرق سوس Licorice Root Extract 
+</td>
+<td>1280
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص بلميط زيتي
+</td>
+<td>1280
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>خلاصه كافيار Caviar Extract 
+</td>
+<td>1150
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص سنتيلا
+</td>
+<td>1400
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص الارز المختمر 
+</td>
+<td>1500
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص الخميره  Yeast Extract 
+</td>
+<td>1680
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>Liqorice Extract
+</td>
+<td>4800
+</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td>مستخلص عكبر النحل Propolis Extract 
+</td>
+<td>5735
+</td>
+<td>كيلو</td>
+</tr>
+</table>
+
+<table id="flaver">
+
+
+<th>الاسم</th>
+<th>سعر ال50 جرام</th>
+<th>السعر</th>
+<th>الوحدة</th>
+
+</tr>
+
+<tr>
+    <td>Lemon Flavor / فليفر ليمون</td>
+    <td>140</td>
+    <td>2800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Orange Flavor / فليفر برتقال</td>
+    <td>140</td>
+    <td>2800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Strawberry Flavor / فليفر فراولة</td>
+    <td>140</td>
+    <td>2800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Vanilla Flavor / فليفر فانيليا</td>
+    <td>140</td>
+    <td>2800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Caramel Flavor / فليفر كراميل</td>
+    <td>140</td>
+    <td>2800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Peppermint Flavor / فليفر نعناع</td>
+    <td>145</td>
+    <td>2900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Nescafe Flavor / فليفر نسكافيه</td>
+    <td>149.5</td>
+    <td>2990</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Sea Breeze Flavor / فليفر نسيم البحر</td>
+    <td>149.5</td>
+    <td>2990</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Mango Flavor / فليفر مانجو</td>
+    <td>240</td>
+    <td>4800</td>
+    <td>كيلو</td>
+</tr>
+
+</table>
+
+
+<table id="ibraTable" style="display:none;">
+   
+      <tr>
+    <th>الاسم</th>
+    <th>سعر ال50 جرام</th>
+    <th>السعر</th>
+    <th>الوحدة</th>
+</tr>
+
+<tr>
+    <td>Weekend / ويك إند</td>
+    <td>240</td>
+    <td>4800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Crazy Life / كريزي لايف</td>
+    <td>245</td>
+    <td>4900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Lacoste Essential / لاكوست إسينشيال</td>
+    <td>265</td>
+    <td>5300</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Carezma / كرزما</td>
+    <td>280</td>
+    <td>5600</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Marshmallow / مارشميلو</td>
+    <td>290</td>
+    <td>5800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Coco Chanel / كوكو شانيل</td>
+    <td>310</td>
+    <td>6200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Yara / يارا</td>
+    <td>330</td>
+    <td>6600</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Hypnotic Poison / هيبنوتيك بويزن</td>
+    <td>340</td>
+    <td>6800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>CM World Women / سي إم وورلد وومن</td>
+    <td>345</td>
+    <td>6900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Lapidus / لابيدوس</td>
+    <td>345</td>
+    <td>6900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Yara Candy / يارا كاندي</td>
+    <td>445</td>
+    <td>8900</td>
+    <td>كيلو</td>
+</tr>
+
+</table>
+ 
+<table id="luziTable" style="display:none;">
+
+ <tr>
+    <th>الاسم</th>
+    <th>سعر ال50 جرام</th>
+    <th>السعر</th>
+    <th>الوحدة</th>
+</tr>
+
+<tr>
+    <td>Le Geek / ليك جيك</td>
+    <td>455</td>
+    <td>9100</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Black XS / بلاك XS</td>
+    <td>460</td>
+    <td>9200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Very Sexy Women / فيري سيكسي حريمي</td>
+    <td>480</td>
+    <td>9600</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Very Sexy Men / فيري سيكسي رجالي</td>
+    <td>495</td>
+    <td>9900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Libre / ليبر</td>
+    <td>720</td>
+    <td>14400</td>
+    <td>كيلو</td>
+</tr>
+  </table>
+<table id="victoriaTable" style="display:none;">
+<tr>
+    <th>الاسم</th>
+    <th>سعر ال50 جرام</th>
+    <th>السعر</th>
+    <th>الوحدة</th>
+</tr>
+
+<tr>
+    <td>Love Spell / لوف سبيل</td>
+    <td>240</td>
+    <td>4800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Victoria's Secret</td>
+    <td>245</td>
+    <td>4900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Very Sexy</td>
+    <td>249.5</td>
+    <td>4990</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Vantazia / فانتازيا</td>
+    <td>270</td>
+    <td>5400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Bombshell / بومب شيل</td>
+    <td>295</td>
+    <td>5900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>CI Passion / سي آي باشن</td>
+    <td>315</td>
+    <td>6300</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Secret Charm / سيكرت شارم</td>
+    <td>240</td>
+    <td>4800</td>
+    <td>كيلو</td>
+</tr>
+
+</table>
+<table id="bathansbodeTable" style="display:none;">
+<tr>
+    <th>الاسم</th>
+    <th>سعر ال50 جرام</th>
+    <th>السعر</th>
+    <th>الوحدة</th>
+</tr>
+
+<tr>
+    <td>Love Spell / لوف سبيل</td>
+    <td>240</td>
+    <td>4800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Victoria's Secret</td>
+    <td>245</td>
+    <td>4900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Very Sexy</td>
+    <td>249.5</td>
+    <td>4990</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Vantazia / فانتازيا</td>
+    <td>270</td>
+    <td>5400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Bombshell / بومب شيل</td>
+    <td>295</td>
+    <td>5900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>CI Passion / سي آي باشن</td>
+    <td>315</td>
+    <td>6300</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Secret Charm / سيكرت شارم</td>
+    <td>240</td>
+    <td>4800</td>
+    <td>كيلو</td>
+</tr>
+</table>
+<table id="maskaTable" style="display:none;">
+<tr>
+    <th>الاسم</th>
+    <th>سعر ال50 جرام</th>
+    <th>السعر</th>
+    <th>الوحدة</th>
+</tr>
+
+<tr>
+    <td>Strawberry Musk / مسك الفراولة</td>
+    <td>145</td>
+    <td>2900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Pomegranate Musk / مسك الرمان</td>
+    <td>160</td>
+    <td>3200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Berry Musk / مسك التوت</td>
+    <td>160</td>
+    <td>3200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Musk Wasal / مسك وصال</td>
+    <td>160</td>
+    <td>3200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>White Musk / مسك أبيض</td>
+    <td>195</td>
+    <td>3900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Purity Musk / مسك الطهارة</td>
+    <td>195</td>
+    <td>3900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Kaaba Musk / مسك الكعبة</td>
+    <td>195</td>
+    <td>3900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Musk Powder / مسك بودرة</td>
+    <td>195</td>
+    <td>3900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Vanilla Musk / مسك الفانيليا</td>
+    <td>195</td>
+    <td>3900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Musk Sabaya / مسك صبايا</td>
+    <td>300</td>
+    <td>6000</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>White Musk (Premium) / مسك أبيض فاخر</td>
+    <td>295</td>
+    <td>5900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Red Musk / مسك أحمر</td>
+    <td>385</td>
+    <td>7700</td>
+    <td>كيلو</td>
+</tr>
+</table>
+
+<table id="oudaTable" style="display:none;">
+
+<tr>
+    <th>الاسم</th>
+    <th>سعر ال50 جرام</th>
+    <th>السعر</th>
+    <th>الوحدة</th>
+</tr>
+
+<tr>
+    <td>Oud Bouquet / عود بوكيه</td>
+    <td>280</td>
+    <td>5600</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Oud Kalemat / عود كلمات</td>
+    <td>295</td>
+    <td>5900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Oud Madawy / عود مضاوي</td>
+    <td>295</td>
+    <td>5900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Aqua Bulgari Wood Oud / أكوا بولغاري وود عود</td>
+    <td>295</td>
+    <td>5900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>White Oud / عود أبيض</td>
+    <td>295</td>
+    <td>5900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Emirates Oud / عود الإمارات</td>
+    <td>330</td>
+    <td>6600</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Oud Kingdom / عود كينجدوم</td>
+    <td>345</td>
+    <td>6900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Mysterious Oud / مستيريوس عود</td>
+    <td>400</td>
+    <td>8000</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Black Afghan Oud (Yellow) / بلاك أفغانو أصفر</td>
+    <td>675</td>
+    <td>13500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Black Afghan Oud (Black) / بلاك أفغانو أسود</td>
+    <td>1310</td>
+    <td>26200</td>
+    <td>كيلو</td>
+</tr>
+</table>
+
+<table id="collactionaTable" style="display:none;">
+
+<tr>
+    <th>الاسم</th>
+    <th>سعر ال50 جرام</th>
+    <th>السعر</th>
+    <th>الوحدة</th>
+</tr>
+
+<tr>
+    <td>Persil / برسيل</td>
+    <td>140</td>
+    <td>2800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Apple / تفاح</td>
+    <td>140</td>
+    <td>2800</td>
+    <td>كيلو</td>
+</tr>
+
+
+<tr>
+    <td>Nescafe / نسكافيه</td>
+    <td>149.5</td>
+    <td>2990</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Sea Breeze / نسيم البحر</td>
+    <td>149.5</td>
+    <td>2990</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Banana / موز</td>
+    <td>170</td>
+    <td>3400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Watermelon / بطيخ</td>
+    <td>170</td>
+    <td>3400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Arabesque / أرابيسك</td>
+    <td>175</td>
+    <td>3500</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Vanilla / فانيليا</td>
+    <td>185</td>
+    <td>3700</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Vanilla Cheesecake / فانيليا تشيز كيك</td>
+    <td>210</td>
+    <td>4200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Casellia / كاسيليا</td>
+    <td>230</td>
+    <td>4600</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Fehrenhite / فهرنهايت</td>
+    <td>295</td>
+    <td>5900</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Cigar / سيجار</td>
+    <td>315</td>
+    <td>6300</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Amber / عنبر</td>
+    <td>340</td>
+    <td>6800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Little Black / ليتل بلاك</td>
+    <td>340</td>
+    <td>6800</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>I Am White / آي آم وايت</td>
+    <td>370</td>
+    <td>7400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Versace Eros / فيرساتشي إيروس</td>
+    <td>370</td>
+    <td>7400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Si Fiori / سي فيوري</td>
+    <td>410</td>
+    <td>8200</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Asad / أسد</td>
+    <td>420</td>
+    <td>8400</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Ambrial Valley / أمبريال فالي</td>
+    <td>635</td>
+    <td>12700</td>
+    <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Betcholy / باتشولي</td>
+    <td>690</td>
+    <td>13800</td>
+    <td>كيلو</td>
+</tr>
+</table>
+</body>
+</html>
