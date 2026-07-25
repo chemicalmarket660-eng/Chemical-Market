@@ -60,7 +60,29 @@ header{
     height:120px;
 }
 
+.companyBtn{
+    background:#0b5ed7;
+    color:white;
+    font-size:18px;
+    padding:15px 25px;
+    margin:8px;
+    border:none;
+    border-radius:40px;
+    font-weight:bold;
+}
 
+.companyBtn:hover{
+    background:#c2185b;
+}
+
+#searchMessage{
+    display:none;
+    color:red;
+    font-size:40px;
+    font-weight:bold;
+    text-align:center;
+    margin-top:20px;
+}
 
 button{
     background:#0b5ed7;
@@ -151,11 +173,14 @@ function showTable(id) {
     document.getElementById(id).style.display = "table";
     document.getElementById(id).classList.add("active");
 }
+
+
 function showTable(id) {
 
     if (document.getElementById("welcome")) {
         document.getElementById("welcome").style.display = "none";
     }
+
 
     let tables = document.querySelectorAll("table");
     tables.forEach(function(table){
@@ -163,82 +188,103 @@ function showTable(id) {
         table.classList.remove("active");
     });
 
-    const perfumeButtons = document.getElementById("perfumeButtons");
 
-    
+    let mainButtons = document.querySelectorAll(
+        "button:not(.companyBtn)"
+    );
+
+
+    let perfumeButtons = document.getElementById("perfumeButtons");
+
     if (
         id === "perfumes" ||
         id === "ibraTable" ||
         id === "luziTable" ||
         id === "victoriaTable" ||
         id === "bathansbodeTable" ||
-  id === "maskaTable" ||
-  id === "oudaTable" ||
- 
+        id === "maskaTable" ||
+        id === "oudaTable" ||
         id === "collactionaTable"
     ) {
 
-        perfumeButtons.style.display = "block";
+        mainButtons.forEach(function(btn){
+            if(!perfumeButtons.contains(btn)){
+                btn.style.display="none";
+            }
+        });
 
-      
-        if (id !== "perfumes") {
-            document.getElementById(id).style.display = "table";
+        perfumeButtons.style.display="block";
+
+        if(id!="perfumes"){
+            document.getElementById(id).style.display="table";
             document.getElementById(id).classList.add("active");
         }
 
     } else {
 
-        
-        perfumeButtons.style.display = "none";
-        document.getElementById(id).style.display = "table";
-        document.getElementById(id).classList.add("active");
+        mainButtons.forEach(function(btn){
+            btn.style.display="inline-block";
+        });
 
+        perfumeButtons.style.display="none";
+
+        document.getElementById(id).style.display="table";
+        document.getElementById(id).classList.add("active");
     }
 }
 
-function searchProduct(){
 
-var value=document.getElementById("searchText").value.toUpperCase();
+function searchProduct() {
 
-var tables=document.querySelectorAll("table");
+    var value = document.getElementById("searchText").value.toUpperCase().trim();
 
-tables.forEach(function(table){
+    var tables = document.querySelectorAll("table");
 
-var rows=table.getElementsByTagName("tr");
+    var found = false;
 
-var found=false;
+    tables.forEach(function(table){
 
-for(var i=1;i<rows.length;i++){
+        table.classList.remove("active");
 
-if(rows[i].innerText.toUpperCase().indexOf(value)>-1){
+        var rows = table.getElementsByTagName("tr");
 
-rows[i].style.display="";
+        var tableFound = false;
 
-found=true;
+        for(var i = 1; i < rows.length; i++){
 
-}else{
+            if(rows[i].innerText.toUpperCase().indexOf(value) > -1){
 
-rows[i].style.display="none";
+                rows[i].style.display = "";
+                tableFound = true;
+                found = true;
+
+            }else{
+
+                rows[i].style.display = "none";
+
+            }
+
+        }
+
+        if(tableFound){
+
+            table.classList.add("active");
+
+            document.getElementById("welcome").style.display = "none";
+
+        }
+
+    });
+
+    if(!found){
+
+        alert("عذراً الماده غير متاحه حاليا ");
+
+    }
 
 }
 
-}
 
-if(found){
-
-table.classList.add("active");
-
-document.getElementById("welcome").style.display="none";
-
-}else{
-
-table.classList.remove("active");
-
-}
-
-});
-
-}
 </script>
 
 </head>
@@ -247,7 +293,7 @@ table.classList.remove("active");
 
 <header>
 <div style="text-align:left; font-size:8px; margin-bottom:10px;">
-7/2026
+25/7/2026
 </div>
 
 
@@ -258,8 +304,7 @@ table.classList.remove("active");
 </header>
 
 
-</div>
-<div class="buttons">
+<div id="mainButtons">
 
 <button onclick="showTable('silicone')">السيليكونات</button>
 
@@ -284,17 +329,19 @@ table.classList.remove("active");
 
 <div id="perfumeButtons" style="display:none;">
 
-<button onclick="showTable('ibraTable')">إيبرا</button>
+<button class="companyBtn" onclick="showTable('ibraTable')">ايبرا</button>
 
-<button onclick="showTable('luziTable')">لوزي</button>
+<button class="companyBtn" onclick="showTable('luziTable')">لوزي</button>
 
-<button onclick="showTable('victoriaTable')">فيكتوريا سيكريت</button>
+<button class="companyBtn" onclick="showTable('victoriaTable')">فيكتوريا سيكريت</button>
 
-<button onclick="showTable('bathansbodeTable')">باث اند بودي</button>
-<button onclick="showTable('collactionaTable')"> متنوعه</button>
-<button onclick="showTable('maskaTable')">مسكات</button>
+<button class="companyBtn" onclick="showTable('bathansbodeTable')">باث اند بودي</button>
 
-<button onclick="showTable('oudaTable')">اعواد</button>
+<button class="companyBtn" onclick="showTable('maskaTable')">المسكات</button>
+
+<button class="companyBtn" onclick="showTable('oudaTable')">الأعواد</button>
+
+<button class="companyBtn" onclick="showTable('collactionaTable')">متنوعات</button>
 
 
 </div>
@@ -310,12 +357,12 @@ table.classList.remove("active");
 <button onclick="showTable('products')">منتجات جاهزه </button>
 
 <br><br>
-
+<div id="searchMessage"></div>
 <input type="text" id="searchText"
 placeholder="ابحث عن اسم الخامة">
 
 <button onclick="searchProduct()">بحث</button>
-
+</div>
 <div id="welcome">
     <h1>مرحبًا بكم في شركة Chemical Market</h1>
     <h2>نتمنى لكم تجربة مميزة في تصفح منتجاتنا وخاماتنا.</h2>
@@ -369,7 +416,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>جل شعر (صغير)</td>
+    <td>جل شعر (شعبي)</td>
     <td>38</td>
     <td>كيلو</td>
 </tr>
@@ -381,7 +428,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>قاعدة جل (صغير)</td>
+    <td>قاعدة جل (شعبي)</td>
     <td>63</td>
     <td>كيلو</td>
 </tr>
@@ -393,13 +440,13 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>بلسم (صغير)</td>
+    <td>بلسم (شعبي)</td>
     <td>75</td>
     <td>كيلو</td>
 </tr>
 
 <tr>
-    <td>شامبو للشعر (صغير)</td>
+    <td>شامبو للشعر (شعبي)</td>
     <td>75</td>
     <td>كيلو</td>
 </tr>
@@ -411,7 +458,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>حمام كريم (صغير)</td>
+    <td>حمام كريم (شعبي)</td>
     <td>100</td>
     <td>كيلو</td>
 </tr>
@@ -423,13 +470,13 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>قاعدة كريم (بشرة وشعر - صغير)</td>
+    <td>قاعدة كريم (بشرة وشعر - شعبي)</td>
     <td>125</td>
     <td>كيلو</td>
 </tr>
 
 <tr>
-    <td>شاور جل (متوسط)</td>
+    <td>شاور جل (وسط)</td>
     <td>125</td>
     <td>كيلو</td>
 </tr>
@@ -471,7 +518,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>شاور جل (كبير)</td>
+    <td>شاور جل (عالي)</td>
     <td>188</td>
     <td>كيلو</td>
 </tr>
@@ -513,19 +560,19 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>قاعدة كريم 20%</td>
+    <td>%قاعدة كريم 20</td>
     <td>275</td>
     <td>كيلو</td>
 </tr>
 
 <tr>
-    <td>كريم ترميم (صغير)</td>
+    <td>كريم ترميم (شعبي)</td>
     <td>275</td>
     <td>كيلو</td>
 </tr>
 
 <tr>
-    <td>جل Base Gel</td>
+    <td> قاعده جل Base Gel</td>
     <td>300</td>
     <td>كيلو</td>
 </tr>
@@ -609,7 +656,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>كريم مرطب يوريا (متوسط)</td>
+    <td>كريم مرطب يوريا (وسط)</td>
     <td>438</td>
     <td>كيلو</td>
 </tr>
@@ -657,7 +704,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>حمام كريم (كبير)</td>
+    <td>حمام كريم (عالي)</td>
     <td>500</td>
     <td>كيلو</td>
 </tr>
@@ -699,7 +746,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>مقشر أحماض 10%</td>
+    <td>%مقشر أحماض 10</td>
     <td>500</td>
     <td>كيلو</td>
 </tr>
@@ -759,7 +806,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>ترميم فازلين للشعر (صغير)</td>
+    <td>ترميم فازلين للشعر (شعبي)</td>
     <td>625</td>
     <td>كيلو</td>
 </tr>
@@ -789,7 +836,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>مقشر أحماض 20%</td>
+    <td>%مقشر أحماض 20</td>
     <td>688</td>
     <td>كيلو</td>
 </tr>
@@ -987,13 +1034,13 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>كريم مرطب يوريا (كبير)</td>
+    <td>كريم مرطب يوريا (عالي )</td>
     <td>1125</td>
     <td>كيلو</td>
 </tr>
 
 <tr>
-    <td>بروتيز (صغير)</td>
+    <td>بروتيز (شعبي)</td>
     <td>1125</td>
     <td>كيلو</td>
 </tr>
@@ -1257,7 +1304,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>بروتيز (كبير)</td>
+    <td>بروتيز (عالي )</td>
     <td>3750</td>
     <td>كيلو</td>
 </tr>
@@ -1269,13 +1316,13 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>مقشر أحماض فواكه 20%</td>
+    <td>%مقشر أحماض فواكه 20</td>
     <td>3750</td>
     <td>كيلو</td>
 </tr>
 
 <tr>
-    <td>مقشر أحماض فواكه 30%</td>
+    <td>مقشر أحماض فواكه %30</td>
     <td>6375</td>
     <td>كيلو</td>
 </table>
@@ -1575,7 +1622,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-<td> stearic acidاستيارك اسيد
+<td> stearic acid استيارك اسيد
 </td>
 <td>220</td>
 <td>كيلو</td>
@@ -1590,14 +1637,14 @@ placeholder="ابحث عن اسم الخامة">
 
 
 <tr>
-<td>  CETYL ALCOHOL (شمع بلسم)LANET 16 لانت
+<td>  CETYL ALCOHOL LANET (شمع بلسم) 16 لانت
 </td>
 <td>240</td>
 <td>كيلو</td>
 </tr>
 
 <tr>
-<td> لانت OLANET O (شمع بلسم)CETO CETRYL ALCOHOL
+<td> O (شمع بلسم) لانت OLANET CETO CETRYL ALCOHOL
 </td>
 <td>260</td>
 <td>كيلو</td>
@@ -1632,14 +1679,23 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-<td>  ايمالسفين واكسEMULSFYING WAX
+<td>  ا يمالسفين واكسEMULSFYING WAX
 </td>
 <td>485</td>
 <td>كيلو</td>
 </tr>
 
+
+
 <tr>
-<td> BEES WAXشمع عسل
+<td> BEES WAX شمع عسل الاصفر
+</td>
+<td>490</td>
+<td>كيلو</td>
+</tr>
+
+<tr>
+<td> BEES WAX شمع عسل الابيض
 </td>
 <td>490</td>
 <td>كيلو</td>
@@ -1681,7 +1737,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-<td>E WAXاي واكس
+<td>E WAX اي واكس
 </td>
 <td>980</td>
 <td>كيلو</td>
@@ -1696,18 +1752,18 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-<td>BTMS 50 POWDERحبيبات btms 50  
+<td>BTMS 50 POWDER btms 50 (حبيبات) 
 </td>
 <td>
-1380</td>
+1350</td>
 <td>كيلو</td>
 </tr>
 
 <tr>
-<td>BTMS 50 PEELSقشور btms 50  
+<td>BTMS 50 PEELS btms 50  (قشور )
 </td>
 <td>
-1380</td>
+1350</td>
 <td>كيلو</td>
 </tr>
 
@@ -1717,6 +1773,12 @@ placeholder="ابحث عن اسم الخامة">
 <td>
 1380</td>
 <td>كيلو</td>
+</tr>
+
+<tr>
+    <td>Lanolin Wax / شمع اللانولين</td>
+    <td>2800</td>
+    <td>كيلو</td>
 </tr>
 </table>
 <table id="detergent">
@@ -1744,7 +1806,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-<td>Boric Acidبوريك اسيد
+<td>Boric Acid بوريك اسيد
 </td>
 <td>
 360</td>
@@ -1792,7 +1854,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-<td>optiphen plus
+<td> optiphen plus
 </td>
 <td>
 980</td>
@@ -1808,7 +1870,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-<td>OPTIPHENاوبتفين   
+<td>OPTIPHEN اوبتفين   
 </td>
 <td>
 980</td>
@@ -1816,7 +1878,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-<td>MMPمثبت عطري
+<td> MMP مثبت عطري
 </td>
 <td>
 1050</td>
@@ -1824,7 +1886,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-<td>BROPYL BARABENبروبيل برابين
+<td>BROPYL BARABEN بروبيل برابين
 </td>
 <td>
 1200</td>
@@ -1840,7 +1902,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-<td> METHYL SALICYLATEميثيل سالسيلات
+<td> METHYL SALICYLATE ميثيل سالسيلات
 </td>
 <td>
 1200</td>
@@ -1865,7 +1927,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-<td>جيرمابلGERMA BEL 
+<td>  جيرمابلGERMA BEL 
 </td>
 <td>
 1800</td>
@@ -1881,7 +1943,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-<td>هيدروجارHYDRO GAR 
+<td> هيدروجارHYDRO GAR 
 </td>
 <td>
 1700</td>
@@ -2177,7 +2239,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-<td>TCA TRI CHOLORO ACETIC ACIDتراي كلورو اسيتك اسيد tca
+<td>TCA TRI CHOLORO ACETIC ACID tca(تراي كلورو اسيتك اسيد )
 </td>
 <td>
 7800</td>
@@ -2185,7 +2247,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-<td>TRI CLOXANتراي كلوزان
+<td>TRI CLOXAN تراي كلوزان
 </td>
 <td>
 8800</td>
@@ -2201,7 +2263,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-<td>CAFFIEN POWDERكافيين بودر
+<td>CAFFIEN POWDERكافيين بودر 
 </td>
 <td>
 9000</td>
@@ -2209,7 +2271,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-<td>COLLAGEN MARINE LIQUIDكولاجين بحري سائل
+<td>COLLAGEN MARINE LIQUIDكولاجين بحري سائل 
 </td>
 <td>
 9800</td>
@@ -2430,7 +2492,7 @@ placeholder="ابحث عن اسم الخامة">
 <table id="colourmika">
 
 <tr>
-<th>اسم </th>
+<th>اسم اللون  </th>
 <th>سعر ال 50 جرام  </th>
 <th>السعر</th>
 <th>الوحدة</th>
@@ -2617,12 +2679,6 @@ placeholder="ابحث عن اسم الخامة">
     <td>كيلو</td>
 </tr>
 
-<tr>
-    <td>Brown Pigment / بني بيجمنت</td>
-    <td>180</td>
-    <td>3600</td>
-    <td>كيلو</td>
-</tr>
 
 <tr>
     <td>Red Oily / أحمر زيتي</td>
@@ -2638,43 +2694,37 @@ placeholder="ابحث عن اسم الخامة">
     <td>كيلو</td>
 </tr>
 
+
 <tr>
-    <td>Red Pigment / أحمر بيجمنت</td>
+    <td>Green Pigment / أخضر زيتي </td>
     <td>220</td>
     <td>4400</td>
     <td>كيلو</td>
 </tr>
 
 <tr>
-    <td>Green Pigment / أخضر بيجمنت</td>
+    <td>Orange Pigment / برتقالي زيتي </td>
     <td>220</td>
     <td>4400</td>
     <td>كيلو</td>
 </tr>
 
 <tr>
-    <td>Orange Pigment / برتقالي بيجمنت</td>
+    <td>Pink Pigment / بينك زيتي </td>
     <td>220</td>
     <td>4400</td>
     <td>كيلو</td>
 </tr>
 
 <tr>
-    <td>Pink Pigment / بينك بيجمنت</td>
-    <td>220</td>
-    <td>4400</td>
-    <td>كيلو</td>
-</tr>
-
-<tr>
-    <td>Black Pigment / أسود بيجمنت</td>
+    <td>Black Pigment / أسود  زيتي </td>
     <td>245</td>
     <td>4900</td>
     <td>كيلو</td>
 </tr>
 
 <tr>
-    <td>Blue Pigment / أزرق بيجمنت</td>
+    <td>Blue Pigment / أزرق زيتي </td>
     <td>290</td>
     <td>5800</td>
     <td>كيلو</td>
@@ -3798,13 +3848,13 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>Ethanol 70% / كحول 70%</td>
+    <td>Ethanol 70% / كحول %70</td>
     <td>100</td>
     <td>لتر</td>
 </tr>
 
 <tr>
-    <td>Sodium Hydroxide Flakes 98% / هيدروكسيد الصوديوم 98%</td>
+    <td>Sodium Hydroxide Flakes 98% / %هيدروكسيد الصوديوم 98</td>
     <td>110</td>
     <td>كيلو</td>
 </tr>
@@ -3828,7 +3878,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>Deodorized Ethanol 96% / كحول إيثانول 96%</td>
+    <td>Deodorized Ethanol 96% /% كحول إيثانول 96</td>
     <td>135</td>
     <td>لتر</td>
 </tr>
@@ -3846,7 +3896,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>Deodorized Ethanol 99% / كحول إيثانول 99%</td>
+    <td>Deodorized Ethanol 99% / %كحول إيثانول 99</td>
     <td>160</td>
     <td>لتر</td>
 </tr>
@@ -3858,7 +3908,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>Citric Acid (Fine) / حمض الستريك الناعم</td>
+    <td>Citric Acid (Fine) /  الناعم</td>
     <td>165</td>
     <td>كيلو</td>
 </tr>
@@ -3881,7 +3931,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>Isopropyl Alcohol (IPA) 99.9% / كحول أيزوبروبانول 99.9%</td>
+    <td>Isopropyl Alcohol (IPA) 99.9% /% كحول أيزوبروبانول 99.9</td>
     <td>199</td>
     <td>لتر</td>
 </tr>
@@ -3905,7 +3955,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>Sulphonic Acid 90% / سلفونيك سائل 90%</td>
+    <td>Sulphonic Acid 90% / %سلفونيك سائل 90</td>
     <td>230</td>
     <td>كيلو</td>
 </tr>
@@ -3939,7 +3989,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>Hydrogen Peroxide 65% / ماء أكسجين 65%</td>
+    <td>Hydrogen Peroxide 65% / %ماء أكسجين 65</td>
     <td>240</td>
     <td>كيلو</td>
 </tr>
@@ -4048,7 +4098,7 @@ placeholder="ابحث عن اسم الخامة">
 </tr>
 
 <tr>
-    <td>Benzalkonium Chloride 80% / بنزالكونيوم كلوريد 80%</td>
+    <td>Benzalkonium Chloride 80% / %بنزالكونيوم كلوريد 80</td>
     <td>340</td>
     <td>كيلو</td>
 </tr>
@@ -4096,26 +4146,9 @@ placeholder="ابحث عن اسم الخامة">
     <td>كيلو</td>
 </tr>
 
-<tr>
-    <td>Emulsifying Wax / شمع الاستحلاب</td>
-    <td>440</td>
-    <td>كيلو</td>
-</tr>
 
 <tr>
-    <td>Beeswax Yellow / شمع العسل الأصفر</td>
-    <td>450</td>
-    <td>كيلو</td>
-</tr>
-
-<tr>
-    <td>Beeswax White / شمع العسل الأبيض</td>
-    <td>460</td>
-    <td>كيلو</td>
-</tr>
-
-<tr>
-    <td>Sodium Lauryl Ether Sulfate (SLES) / سليس</td>
+    <td>Sodium Lauryl Ether Sulfate (SLES) / صوديوم لوريال ايثير سلفات</td>
     <td>480</td>
     <td>كيلو</td>
 </tr>
@@ -4265,12 +4298,12 @@ placeholder="ابحث عن اسم الخامة">
 
 <tr>
     <td>Phenoxyethanol / فينوكسي إيثانول</td>
-    <td>420</td>
+    <td>540</td>
     <td>كيلو</td>
 </tr>
 
 <tr>
-    <td>Glyoxylic Acid / جلايكوكسيليك أسيد</td>
+    <td>Glyoxylic Acid /جلايكوزيليك اسيد</td>
     <td>555</td>
     <td>كيلو</td>
 </tr>
@@ -4472,11 +4505,6 @@ placeholder="ابحث عن اسم الخامة">
     <td>كيلو</td>
 </tr>
 
-<tr>
-    <td>Lanolin Wax / شمع اللانولين</td>
-    <td>2800</td>
-    <td>كيلو</td>
-</tr>
 
 <tr>
     <td>Thymol Crystals / بلورات الثيمول</td>
